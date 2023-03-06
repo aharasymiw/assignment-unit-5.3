@@ -48,3 +48,5 @@ function findByArtist(artist) {
     }
     return resultsByArtist;
 }
+
+console.log("findByArtist test:", findByArtist("Artist 2"));
