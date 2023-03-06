@@ -38,3 +38,13 @@ function showCollection(array) {
 }
 
 showCollection(collection);
+
+function findByArtist(artist) {
+    let resultsByArtist = [];
+    for (album of collection) {
+        if (album.artist === artist) {
+            resultsByArtist.push(album);
+        }
+    }
+    return resultsByArtist;
+}
