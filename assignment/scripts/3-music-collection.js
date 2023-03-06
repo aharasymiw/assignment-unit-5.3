@@ -50,3 +50,4 @@ function findByArtist(artist) {
 }
 
 console.log("findByArtist test:", findByArtist("Artist 2"));
+console.log("findByArtist test:", findByArtist("Artist 4"));
