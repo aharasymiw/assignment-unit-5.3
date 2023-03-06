@@ -51,3 +51,20 @@ function findByArtist(artist) {
 
 console.log("findByArtist test:", findByArtist("Artist 2"));
 console.log("findByArtist test:", findByArtist("Artist 4"));
+
+function search(query) {
+
+    if (query === undefined || query.artist === undefined || query.year === undefined) {
+        return collection;
+    }
+
+    let resultsByArtistAndYear = [];
+
+    for (album of collection) {
+        if (album.artist === query.artist && album.yearPublished === query.year) {
+            results.push(album);
+        }
+    }
+
+    return resultsByArtistAndYear;
+}
