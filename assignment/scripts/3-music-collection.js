@@ -28,3 +28,11 @@ console.log(addToCollection("Title 5", "Artist 3", 2002));
 console.log(addToCollection("Title 6", "Artist 3", 2003));
 
 console.log("collection", collection);
+
+function showCollection(array) {
+    console.log("Number of items:", array.length);
+    console.log("\n\n COLLECTION CONTENTS: \n\n");
+    for (item of array) {
+        console.log(`${item.title} by ${item.artist}, published in ${item.yearPublished}`)
+    }
+}
