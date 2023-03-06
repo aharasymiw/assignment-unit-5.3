@@ -36,3 +36,5 @@ function showCollection(array) {
         console.log(`${item.title} by ${item.artist}, published in ${item.yearPublished}`)
     }
 }
+
+showCollection(collection);
