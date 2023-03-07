@@ -5,12 +5,13 @@ let collection = [];
 
 // Take in information about an album, turn it into an object, and add it to our
 // collection array.
-function addToCollection(title, artist, yearPublished) {
+function addToCollection(title, artist, yearPublished, tracks) {
     // Turn our information into an object.
     let newCollectionItem = {
         title: title,
         artist: artist,
-        yearPublished: yearPublished
+        yearPublished: yearPublished,
+        tracks: tracks
     };
 
     // Add that object to our collection array.
@@ -20,15 +21,26 @@ function addToCollection(title, artist, yearPublished) {
     return newCollectionItem;
 }
 
-console.log(addToCollection("Title 1", "Artist 1", 2000));
-console.log(addToCollection("Title 2", "Artist 1", 2001));
-console.log(addToCollection("Title 3", "Artist 2", 2001));
-console.log(addToCollection("Title 4", "Artist 2", 2002));
-console.log(addToCollection("Title 5", "Artist 3", 2002));
-console.log(addToCollection("Title 6", "Artist 3", 2003));
-console.log(addToCollection("Title 7", "Artist 3", 2003));
-console.log(addToCollection("Title 8", "Artist 3", 2003));
-console.log(addToCollection("Title 9", "Artist 4", 2003));
+let track1 = {
+    name: "Awesome Song",
+    duration: 616
+};
+let track2 = {
+    name: "Better Ballad",
+    duration: 205
+};
+
+let tracks = [track1, track2];
+
+console.log(addToCollection("Title 1", "Artist 1", 2000, tracks));
+console.log(addToCollection("Title 2", "Artist 1", 2001, tracks));
+console.log(addToCollection("Title 3", "Artist 2", 2001, tracks));
+console.log(addToCollection("Title 4", "Artist 2", 2002, tracks));
+console.log(addToCollection("Title 5", "Artist 3", 2002, tracks));
+console.log(addToCollection("Title 6", "Artist 3", 2003, tracks));
+console.log(addToCollection("Title 7", "Artist 3", 2003, tracks));
+console.log(addToCollection("Title 8", "Artist 3", 2003, tracks));
+console.log(addToCollection("Title 9", "Artist 4", 2003, tracks));
 
 
 
@@ -38,7 +50,12 @@ function showCollection(array) {
     console.log("Number of items:", array.length);
     console.log("\n\n COLLECTION CONTENTS: \n\n");
     for (item of array) {
-        console.log(`${item.title} by ${item.artist}, published in ${item.yearPublished}`)
+        console.log(`${item.title} by ${item.artist}, published in ${item.yearPublished}:\n`);
+        let trackNumber = 1;
+        item.tracks.forEach(track => {
+            console.log(`${trackNumber}. ${track.name}: ${track.duration}`);
+            trackNumber++;
+        });
     }
 }
 
@@ -58,6 +75,19 @@ console.log("findByArtist test:", findByArtist("Artist 2"));
 console.log("findByArtist test:", findByArtist("Artist 4"));
 
 function search(query) {
+
+    if (query.trackName) {
+        let resultsByTrackName = [];
+
+        for (album of collection) {
+            album.tracks.forEach(track => {
+                if (track.name === query.trackName) {
+                    resultsByTrackName.push(album);
+                }
+            });
+        }
+        return resultsByTrackName;
+    }
 
     if (query === undefined || query.artist === undefined || query.year === undefined) {
         return collection;
@@ -94,3 +124,9 @@ query3 = {
 };
 
 console.log("test search should yeild Title 6,7,8:", search(query3));
+
+query4 = {
+    trackName: "Better Ballad"
+};
+
+console.log("test search should yeild Better Ballad:", search(query4));
