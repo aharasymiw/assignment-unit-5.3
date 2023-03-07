@@ -26,6 +26,11 @@ console.log(addToCollection("Title 3", "Artist 2", 2001));
 console.log(addToCollection("Title 4", "Artist 2", 2002));
 console.log(addToCollection("Title 5", "Artist 3", 2002));
 console.log(addToCollection("Title 6", "Artist 3", 2003));
+console.log(addToCollection("Title 7", "Artist 3", 2003));
+console.log(addToCollection("Title 8", "Artist 3", 2003));
+console.log(addToCollection("Title 9", "Artist 4", 2003));
+
+
 
 console.log("collection", collection);
 
@@ -62,9 +67,30 @@ function search(query) {
 
     for (album of collection) {
         if (album.artist === query.artist && album.yearPublished === query.year) {
-            results.push(album);
+            resultsByArtistAndYear.push(album);
         }
     }
 
     return resultsByArtistAndYear;
 }
+
+let query1 = {
+    artist: "Artist 3",
+    year: 2002
+};
+
+console.log("test search should yeild Title 5:", search(query1));
+
+query2 = {
+    artist: "Artist 7",
+    year: 2002
+};
+
+console.log("test search should yeild []:", search(query2));
+
+query3 = {
+    artist: "Artist 3",
+    year: 2003
+};
+
+console.log("test search should yeild Title 6,7,8:", search(query3));
