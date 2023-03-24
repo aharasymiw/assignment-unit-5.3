@@ -79,7 +79,7 @@ function search(query) {
     if (query.trackName) {
         let resultsByTrackName = [];
 
-        for (album of collection) {
+        for (let album of collection) {
             album.tracks.forEach(track => {
                 if (track.name === query.trackName) {
                     resultsByTrackName.push(album);
@@ -95,7 +95,7 @@ function search(query) {
 
     let resultsByArtistAndYear = [];
 
-    for (album of collection) {
+    for (let album of collection) {
         if (album.artist === query.artist && album.yearPublished === query.year) {
             resultsByArtistAndYear.push(album);
         }
@@ -111,21 +111,21 @@ let query1 = {
 
 console.log("test search should yeild Title 5:", search(query1));
 
-query2 = {
+let query2 = {
     artist: "Artist 7",
     year: 2002
 };
 
 console.log("test search should yeild []:", search(query2));
 
-query3 = {
+let query3 = {
     artist: "Artist 3",
     year: 2003
 };
 
 console.log("test search should yeild Title 6,7,8:", search(query3));
 
-query4 = {
+let query4 = {
     trackName: "Better Ballad"
 };
 
